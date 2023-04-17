@@ -31,47 +31,9 @@ var lista = [
     }
 ];
 
- controller.getAllPessoas = (req,res)=>{
-    res.status(200).send(lista)
-}
 
-controller.getPessoaById = (req,res)=>{
-    item = lista.find(i => i.id == req.params.id)
-  
-    if(item){
-      res.status(200).send(item)
-    } else{
-      res.status(404).sendFile(path.resolve(__dirname+"/../views/notfound.html"))
-    }
-  }
-
-controller.createPessoa = (req,res)=>{
-    const novaPessoa = req.body
-    novaPessoa.id = indice + 1
-    lista.push(novaPessoa)
-    res.status(200).redirect("/pessoas")
-}
-
-controller.updatePessoa = (req,res)=>{
-    pessoaIndice = lista.findIndex(p => p.id == req.params.id)
-    console.log(pessoaIndice)
-    if(pessoaIndice >= 0){
-      const pessoaAtualizada = req.body;
-      lista[pessoaIndice] = pessoaAtualizada;
-      res.status(200).send("OK")
-    }else{
-      res.status(404).sendFile(path.resolve(__dirname+"/../views/notfound.html"))
-    }
-}
-
-controller.deletePessoa = (req,res)=>{
-  const pessoaIndice = lista.findIndex(p => p.id == req.params.id);
-  if (pessoaIndice >= 0) {
-    lista.splice(pessoaIndice, 1);
-    res.status(200).send("OK")
-  }else{
-    res.status(404).sendFile(path.resolve(__dirname+"/../views/notfound.html"))
-  }
+controller.getAll = (req,res)=>{
+  res.status(200).send(lista)
 }
 
 module.exports = controller
