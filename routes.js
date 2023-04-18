@@ -5,8 +5,8 @@ const routes = express.Router()
   
 routes.get("/",controller.getAll)
 routes.get("/:id",controller.getById)
-// routes.post("/pessoas",controller.createPessoa)
-// routes.put("/pessoas/:id",controller.updatePessoa)
-// routes.delete("/pessoas/:id",controller.deletePessoa)
+routes.post("/",controller.create)
+routes.put("/:id",controller.update)
+routes.delete("/:id",controller.delete)
 
 module.exports = routes

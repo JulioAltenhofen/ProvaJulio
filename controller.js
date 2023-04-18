@@ -45,4 +45,20 @@ controller.getById = (req,res)=>{
     res.status(404)
   }
 }
+controller.create = (req,res)=>{
+  console.log()
+  lista.push(req.body)
+  res.status(200).redirect("/")
+ }
+ 
+  controller.update = (req,res)=>{
+  lista[req.params.id-1] = req.body
+  res.status(200).send("Atualizado")
+ }
+ 
+  controller.delete = (req,res)=>{
+  lista.splice(req.params.id-1,1)
+  res.status(200).send("Deletado")
+ }
+ 
 module.exports = controller
